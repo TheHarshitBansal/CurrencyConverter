@@ -46,11 +46,11 @@ const updateExchangeRate = async ()=>{
         amount.value = 1;
     }
 
-    let URL = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${fromCountry.value.toLowerCase()}/${toCountry.value.toLowerCase()}.json`
+    let URL = `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/${fromCountry.value.toLowerCase()}.json`
 
     let response = await fetch(URL);
     let data = await response.json();
-    let rate = data[toCountry.value.toLowerCase()];
+    let rate = data[fromCountry.value.toLowerCase()][toCountry.value.toLowerCase()];
     let finalRate = amtVal*rate;
     msg.innerText = `${amtVal} ${fromCountry.value} = ${finalRate} ${toCountry.value}`
 }
